@@ -77,6 +77,8 @@ open class FileDestination: BaseDestination {
         #else
             #if os(Linux)
                 baseURL = URL(fileURLWithPath: "/var/cache")
+            #elseif os(Android)
+                baseURL = URL(fileURLWithPath: NSTemporaryDirectory())
             #else
                 // iOS, watchOS, etc. are using the caches directory
                 if let url = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first {
@@ -171,7 +173,7 @@ open class FileDestination: BaseDestination {
 
     private func write(data: Data, to url: URL) -> Bool {
         
-        #if os(Linux)
+        #if os(Linux) || os(Android)
             return true
         #else
         var success = false

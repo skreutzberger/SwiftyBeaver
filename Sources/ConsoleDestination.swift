@@ -76,7 +76,7 @@ open class ConsoleDestination: BaseDestination {
         let formattedString = super.send(level, msg: msg, thread: thread, file: file, function: function, line: line, context: context)
 
         if let message = formattedString {
-#if os(Linux)
+#if os(Linux) || os(Android)
             print(message)
 #else
             switch logPrintWay {

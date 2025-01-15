@@ -75,7 +75,7 @@ open class SwiftyBeaver {
     /// returns the current thread name
     open class func threadName() -> String {
 
-        #if os(Linux)
+        #if os(Linux) || os(Android)
             // on 9/30/2016 not yet implemented in server-side Swift:
             // > import Foundation
             // > Thread.isMainThread

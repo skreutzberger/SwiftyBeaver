@@ -4,7 +4,7 @@
 //
 //  Copyright © 2017 Sebastian Kreutzberger. All rights reserved.
 //
-#if os(Linux)
+#if os(Linux) || os(Android)
 import Foundation
 
 struct InvalidBase64: Error {}
